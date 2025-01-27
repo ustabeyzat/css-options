@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="author" content="usta">
+
+<title>CSS OPTIONS</title>
+<style type="text/css">
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #121212;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    #main {
+        text-align: center;
+    }
+    h2 {
+        color: #FFFFFF;
+    }
+    select {
+        padding: 10px 20px;
+        margin: 10px;
+        width: 185px;
+        cursor: pointer;
+    }
+    #grup {
+        display: block;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: normal;
+        margin-top: 30px;
+        background-color: #2f4f4f;
+        border: 2px solid white;
+        width: 100%;
+        height: 350px;
+    }
+    .eleman {
+        background-color: #FFFF00;
+        color: #121212;
+        text-align: center;
+        padding: 10px;
+        margin: 10px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 45px;
+        width: 400px;
+        border-radius: 5px 5px 0px 0px;
+        border: none;
+        background: #2f4f4f;
+        color: white;
+    }
+    #html-code {
+        background-color: grey;
+        color: white;
+        padding: 25px;
+        border-radius: 5px;
+        margin: auto;
+        margin-top: -5px;
+        text-align: left;
+        width: 350px;
+        cursor: pointer;
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+    }
+    #css-code {
+        background-color: #FFFF00;
+        color: #2f4f4f;
+        padding: 25px;
+        border-radius: 5px;
+        margin: auto;
+        margin-top: -5px;
+        margin-bottom: 100px;
+        text-align: left;
+        width: 350px;
+        cursor: pointer;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+        font-size: 16px;
+    }
+</style>
+</head>
+<body>
+
+<div id="main">
+  <h2>CSS OPTIONS</h2>
+
+  <select id="display">
+      <option value="block">DISPLAY</option>
+      <option value="block">Block</option>
+      <option value="inline">Inline</option>
+      <option value="inline-block">Inline Block</option>
+      <option value="flex">Flex</option>
+      <option value="inline-flex">Inline Flex</option>
+      <option value="grid">Grid</option>
+      <option value="contents">Contents</option>
+      <option value="none">None</option>
+      <option value="initial">Initial</option>
+      <option value="inherit">Inherit</option>
+  </select>
+
+  <select id="flex-direction">
+      <option value="row">FLEX DIRECTION</option>
+      <option value="row">Row</option>
+      <option value="row-reverse">Row Reverse</option>
+      <option value="column">Column</option>
+      <option value="column-reverse">Column Reverse</option>
+  </select><br>
+
+  <select id="justify-content">
+      <option value="flex-start">JUSTIFY CONTENT</option>
+      <option value="flex-start">Flex Start</option>
+      <option value="center">Center</option>
+      <option value="flex-end">Flex End</option>
+      <option value="space-between">Space Between</option>
+      <option value="space-around">Space Around</option>
+      <option value="space-evenly">Space Evenly</option>
+  </select>
+
+  <select id="align-items">
+      <option value="normal">ALIGN ITEMS</option>
+      <option value="normal">Normal</option>
+      <option value="center">Center</option>
+      <option value="stretch">Stretch</option>
+      <option value="flex-start">Flex Start</option>
+      <option value="flex-end">Flex End</option>
+      <option value="baseline">Baseline</option>
+  </select><br>
+<!--
+  <select id="background-color">
+      <option value="#2f4f4f">BACKGROUND COLOR</option>
+      <option value="#2f4f4f">Dark Slate Gray</option>
+      <option value="red">Red</option>
+  </select>
+
+  <select id="empty-option">
+      <option value="empty">EMPTY OPTION</option>
+      <option value="empty">Empty</option>
+      <option value="option">Option</option>
+  </select><br>
+-->
+  <div id="grup">
+      <div class="eleman"> 1 </div>
+      <div class="eleman"> 2 </div>
+      <div class="eleman"> 3 </div>
+  </div>
+
+  <button id="copy-html" onclick="copyHtml()">HTML</button>
+  <p id="html-code" onclick="copyHtml()">
+  &lt;div id="grup"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="eleman"> 1 &lt;/div><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="eleman"> 2 &lt;/div><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="eleman"> 3 &lt;/div><br>
+  &lt;/div>
+  </p>
+
+  <button id="copy-css" onclick="copyCss()">CSS</button>
+  <pre id="css-code" onclick="copyCss()"></pre>
+
+</div>
+
+<script>
+const grupDiv = document.getElementById('grup');
+const displaySelect = document.getElementById('display');
+const flexDirection = document.getElementById('flex-direction');
+const justifyContent = document.getElementById('justify-content');
+const alignItems = document.getElementById('align-items');/*
+const backgroundColor = document.getElementById('background-color');
+const emptyOption = document.getElementById('empty-option');*/
+
+const htmlCodeElement = document.getElementById('html-code');
+function copyHtml() {
+    navigator.clipboard.writeText(htmlCodeElement.textContent);
+}
+const cssCodeElement = document.getElementById('css-code');
+function copyCss() {
+    navigator.clipboard.writeText(cssCodeElement.textContent);
+}
+
+function update() {
+    grupDiv.style.display = displaySelect.value;
+    grupDiv.style.flexDirection = flexDirection.value;
+    grupDiv.style.justifyContent = justifyContent.value;
+    grupDiv.style.alignItems = alignItems.value;/*
+    grupDiv.style.backgroundColor = backgroundColor.value;
+    grupDiv.style.emptyOption = emptyOption.value;
+
+    cssCodeElement.textContent = `
+#grup {
+    display: ${displaySelect.value};
+    flex-direction: ${flexDirection.value};
+    justify-content: ${justifyContent.value};
+    align-items: ${alignItems.value};
+    background-color: ${backgroundColor.value};
+    border: 2px solid white;
+    width: 100%;
+    height: 350px;
+    empty-option: ${emptyOption.value};
+}
+.eleman {
+    background-color: #FFFF00;
+    color: #121212;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}`;*/
+
+    cssCodeElement.textContent = `
+#grup {
+    display: ${displaySelect.value};
+    flex-direction: ${flexDirection.value};
+    justify-content: ${justifyContent.value};
+    align-items: ${alignItems.value};
+    background-color: #2f4f4f;
+    border: 2px solid white;
+    width: 100%;
+    height: 350px;
+}
+.eleman {
+    background-color: #FFFF00;
+    color: #121212;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}`;
+}
+
+update();
+
+displaySelect.addEventListener('change', update);
+flexDirection.addEventListener('change', update);
+justifyContent.addEventListener('change', update);
+alignItems.addEventListener('change', update);/*
+backgroundColor.addEventListener('change', update);
+emptyOption.addEventListener('change', update);*/
+</script>
+</body>
+</html>
